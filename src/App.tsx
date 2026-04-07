@@ -393,7 +393,16 @@ export default function App() {
       }
 
       // Create a new instance right before the call to ensure up-to-date API key
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
+      const apiKey = process.env.GEMINI_API_KEY || (process.env as any).API_KEY;
+      
+      if (!apiKey) {
+        if (activeTab === 'url' && (window as any).aistudio) {
+          await (window as any).aistudio.openSelectKey();
+        }
+        throw new Error("API 키가 누락되었습니다. 오른쪽 상단 설정(Settings) 메뉴에서 API 키를 선택해주세요.");
+      }
+
+      const ai = new GoogleGenAI({ apiKey });
       
       const response = await ai.models.generateContent({
         model: activeTab === 'url' ? "gemini-3.1-pro-preview" : "gemini-3-flash-preview",
