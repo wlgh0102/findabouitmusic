@@ -1,0 +1,7 @@
+{
+  "name": "Music Mood & Genre Analyzer",
+  "description": "음악 파일이나 링크를 분석하여 장르, 분위기, 그리고 영어 키워드를 파악해주는 AI 음악 분석기입니다.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

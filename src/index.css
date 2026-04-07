@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-serenity: #92A8D1;
+  --color-serenity-dark: #7B90B8;
+  --color-serenity-light: #AABCDC;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
