@@ -317,12 +317,10 @@ export default function App() {
 
     try {
       // Check for API key selection if using Pro model (URL tab)
-      if (activeTab === 'url') {
+      if (activeTab === 'url' && (window as any).aistudio) {
         const hasKey = await (window as any).aistudio.hasSelectedApiKey();
         if (!hasKey) {
           await (window as any).aistudio.openSelectKey();
-          // After opening the dialog, we assume the user will select a key.
-          // The instructions say to proceed after triggering openSelectKey.
         }
       }
 
